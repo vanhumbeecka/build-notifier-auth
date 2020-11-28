@@ -4,7 +4,6 @@
   "main": ".dist/index.js",
   "scripts": {
     "lint": "eslint --fix '?(src|test|features)/**/*.ts'",
-    "test": "AWS_XRAY_CONTEXT_MISSING=LOG_ERROR SKIP_ENV_CHECK=1 mocha -r ts-node/register './test/**/*.spec.ts'",
     "build": "rm -rf ./dist && tsc -p tsconfig.build.json",
     "offline:dev": "npm run build && source .env && LOG_LEVEL=debug sls offline start --noTimeout -r eu-west-1 -s dev --port 3030 | bunyan -o short",
     "deploy:dev": "yarn build && source .env.dev && sls deploy -s dev",
